@@ -75,7 +75,7 @@ public class Controller {
 
                 cathSmth = true;
 
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                Alert alert = new Alert(Alert.AlertType.ERROR);
 
                 alert.setTitle("INPUT ERROR");
                 alert.setHeaderText(null);
