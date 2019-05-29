@@ -19,9 +19,10 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
 
         primaryStage.setTitle("Pendulums animation");
-        primaryStage.setScene(new Scene(root));
+        primaryStage.setScene(new Scene(root, 789, 489));
 
         primaryStage.show();
+        primaryStage.setResizable(false);
     }
 
 

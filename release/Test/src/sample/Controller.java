@@ -60,6 +60,7 @@ public class Controller {
 
     @FXML
     void initialize() {
+
         runButton.setOnAction(event -> {
             System.out.println("getValues: ");
 
