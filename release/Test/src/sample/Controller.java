@@ -77,9 +77,9 @@ public class Controller {
 
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
 
-                alert.setTitle("Information");
+                alert.setTitle("INPUT ERROR");
                 alert.setHeaderText(null);
-                alert.setContentText("ENTER ALL INPUT PARAMETERS");
+                alert.setContentText("Enter all input parameters as float values.");
 
                 alert.showAndWait();
             }
