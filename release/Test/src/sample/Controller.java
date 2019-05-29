@@ -15,6 +15,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -23,6 +24,8 @@ import javafx.stage.Window;
 import javafx.util.Duration;
 
 import javax.swing.*;
+
+
 
 public class Controller {
 
@@ -50,6 +53,9 @@ public class Controller {
     @FXML
     private TextField firstMass;
 
+    @FXML
+    private Pane canvas;
+
     private double firstLengthVal = 0;
     private double secondLengthVal = 0;
     private double firstMassVal = 0;
@@ -57,6 +63,9 @@ public class Controller {
     private double startAngleVal = 0;
 
     private boolean cathSmth = false;
+    private boolean buttonIsPushed = false;
+
+    private PendulumContext pendulums;
 
     @FXML
     void initialize() {
@@ -87,6 +96,22 @@ public class Controller {
 
             if (!cathSmth){
 
+                buttonIsPushed = true;
+
+//                pendulums = new PendulumContext(startAngleVal, canvas);
+//                pendulums.restartSimaulation();
+
+//                long step = 16L;
+//                while (true){
+//                    pendulums.tick(step / 1000.0);
+//                    try {
+//                        Thread.sleep(step);
+//                    } catch (InterruptedException e) {
+//                        e.printStackTrace();
+//                    }
+//
+//
+//                }
             }
 
         });
