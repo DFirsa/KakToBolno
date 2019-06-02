@@ -37,6 +37,8 @@ public class Main extends Application {
 
         PendulumContext context = new PendulumContext(controller.canvas);
 
+        System.out.println(8.31*Math.log(5/2));
+
         long step  = 16L;
         Timeline timeline = new Timeline(new KeyFrame(Duration.millis(step),
                 new EventHandler<ActionEvent>() {
@@ -44,7 +46,8 @@ public class Main extends Application {
                     public void handle(ActionEvent event) {
                         if (!controller.isUpdate){
                             controller.isUpdate = true;
-                            context.setData(controller.firstMassVal,1,controller.startAngleVal,0);
+//                            context.setData(controller.firstMassVal,1,controller.startAngleVal,0);
+                            context.setData(controller.firstAngleVal, controller.secondAngleVal, controller.massVal);
                             context.restartSimaulation();
                         }
 

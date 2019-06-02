@@ -2,11 +2,14 @@ package sample;
 
 import java.awt.*;
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.util.ResourceBundle;
 
 import javafx.animation.FadeTransition;
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.Group;
 import javafx.scene.Parent;
@@ -30,37 +33,39 @@ import javax.swing.*;
 public class Controller {
 
     @FXML
-    private ResourceBundle resources;
+    Pane canvas;
 
     @FXML
-    private URL location;
+    private Slider firstAngle;
 
     @FXML
-    private TextField firstLength;
+    private Slider mass;
 
     @FXML
-    private TextField startAngle;
+    private Slider secondAngle;
 
     @FXML
-    private TextField secondLength;
-
-    @FXML
-    private TextField secondMass;
+    private Label secondAngleOut;
 
     @FXML
     private Button runButton;
 
     @FXML
-    private TextField firstMass;
+    private Label firstAngleOut;
 
     @FXML
-    Pane canvas;
+    private Label massOut;
 
-    double firstLengthVal = 0;
-    double secondLengthVal = 0;
-    double firstMassVal = 0;
-    double secondMassVal = 0;
-    double startAngleVal = 0;
+//    double firstLengthVal = 0;
+//    double secondLengthVal = 0;
+//    double firstMassVal = 0;
+//    double secondMassVal = 0;
+//    double startAngleVal = 0;
+
+    double firstAngleVal = 0;
+    double secondAngleVal = 0;
+    double massVal = 0;
+
 
     boolean cathSmth = false;
     boolean buttonIsPushed = false;
@@ -76,18 +81,34 @@ public class Controller {
     @FXML
     void initialize() {
 
+        mass.valueProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                massOut.textProperty().setValue(String.format("%.3f", mass.getValue()));
+            }
+        });
+
+        firstAngle.valueProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                firstAngleOut.textProperty().setValue(String.format("%.3f", firstAngle.getValue()));
+            }
+        });
+
+        secondAngle.valueProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                secondAngleOut.textProperty().setValue(String.format("%.3f", secondAngle.getValue()));
+            }
+        });
+
         runButton.setOnAction(event -> {
 
             try{
 
-                firstLengthVal = Double.valueOf(firstLength.getText());
-                secondLengthVal = Double.valueOf(secondLength.getText());
-                firstMassVal = Double.valueOf(firstMass.getText());
-                secondMassVal = Double.valueOf(secondMass.getText());
-                startAngleVal = Double.valueOf(startAngle.getText());
-
-                double[] container = {firstLengthVal, secondLengthVal, firstMassVal, secondMassVal, startAngleVal};
-                if (cont(container)) cathSmth = true;
+                firstAngleVal = firstAngle.getValue();
+                secondAngleVal = secondAngle.getValue();
+                massVal = mass.getValue();
 
             } catch (java.lang.NumberFormatException e){ cathSmth = true; }
 
@@ -104,6 +125,8 @@ public class Controller {
 
                 alert.showAndWait();
             }
+
+            cathSmth = false;
 
         });
     }

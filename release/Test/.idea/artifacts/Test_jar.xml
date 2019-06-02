@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
-  <artifact type="jar" name="Coupled Pendula Animation">
-    <output-path>$PROJECT_DIR$/out/artifacts/Coupled_Pendula_Animation</output-path>
+  <artifact type="jar" name="Test:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Test_jar</output-path>
     <root id="archive" name="Test.jar">
       <element id="module-output" name="Test" />
     </root>
